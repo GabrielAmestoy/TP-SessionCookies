@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body style = <%= locals.usuario ? usuario.colornuevo : "background-color:#0d1b2a;" %>>
+    <h1 style="color:#fff; margin-bottom: 20px;">Bienvenido!</h1>
+    <h3 style="color:#fff;"><%= usuario.nombre %> ,gracias por visitarnos</h3>
+    <a href = "/users/logout">Cerrar session</a>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+  </head>
+        <body id = "cuerpo" style = <%= locals.usuario ? usuario.colornuevo : "background-color:#0d1b2a;" %>>
+    <% if (locals.usuario) { %>
+        <p class = "datos-usuario">Hola <%= usuario.nombre %> , elegiste el color: <%= usuario.color %> , tu email es:
+            <%= usuario.email %> y tu edad es: <%= usuario.edad %></p>
+            <a  href ="/users/vistaBienvenido"class = "bienvenido">Vista Bienvenido</a>
+    <% }else{%>
+        <div class = "contenedor" >    
+        <h3 class = "titulo-1">Ingrese usuario</h3>
+        <h4 class = "titulo-2">Login</h4>
+        <form action="" method = "POST">
+            <div class = "contenedor-inputs" >
+                <label for="nombre">Ingrese su nombre:</label>
+                <input type="text" name = "nombre" placeholder="nombre">
+                <span class = "mensaje-error"><%= locals.errores && errores.nombre ? errores.nombre.msg : null %></span>
+            </div>
+            <div class = "contenedor-inputs" >
+                <label for="color">Seleccione un color:</label>
+                <select  name = "color">
+                    <option selected hidden>Seleccione un color</option>
+                        <option value="red">rojo</option>
+                        <option value="blue">azul</option>
+                        <option value="green">verde</option>
+                </select>
+                <span class = "mensaje-error"><%= locals.errores && errores.color ? errores.color.msg : null %></span>
+            </div>
+            <div class = "contenedor-inputs" >
+                <label for="email">Ingrese su email:</label>
+                <input name = "email" type="email" placeholder="email">
+                <span class = "mensaje-error"><%= locals.errores && errores.email ? errores.email.msg : null %></span>
+            </div>
+            <div class = "contenedor-inputs" >
+                <label for="edad">Ingrese su edad:</label>
+                <input type="number" name = "edad" placeholder = "edad">
+                <span class = "mensaje-error"><%= locals.errores && errores.edad ? errores.edad.msg : null %></span>
+            </div>
+            <div class = "contenedor-Check">
+                <input type="checkbox" name ="recordarcolor" value= "recordarcolor">
+                <label for="recordarcolor">Guardar Color</label>
+            </div>
+
+            <div class = "contenedor-inputs" style="display: flex; justify-content: flex-end;" >
+                <button class = "btn-enviar" type = "submit">Enviar</button>
+            </div>
+        </form>
+        </div>
+        <% }%>
+  </body>
+</html>
+    
+
